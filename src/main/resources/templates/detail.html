@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Blog Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/blog.css" th:href="@{/asserts/css/blog.css}" rel="stylesheet">
+
+    <script src="asserts/js/vendor/jquery-slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script src="asserts/js/vendor/popper.min.js" th:src="@{/webjars/popper.js/1.15.0/popper.min.js}"></script>
+    <script src="asserts/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
+
+
+</head>
+
+<body>
+
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+                <a class="text-muted" href="#" th:text="${session.loginUser}">Subscribe</a>
+            </div>
+            <div class="col-4 text-center">
+                <a class="blog-header-logo text-dark" href="/main.html">商城</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center ">
+                <div class="p-2 m-2">
+                    <a class="btn btn-sm btn-outline-secondary" href="/main.html">主页</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="/mycenter">我的网上商城</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-12 px-0 ">
+            <div class="row">
+                <div class="col-md-6 card-img-top">
+                    <img class="rounded" th:src="'/img/'+${good.g_name}+.jpg"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-12">
+                        <h1 class="display-4 font-italic" th:text="${good.g_name}">标题</h1>
+                        <p class="lead my-3" th:text="${good.g_detail}">
+                            烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫</p>
+                        <p class="lead mb-0"><a href="#" th:href="${good.g_more}" class="text-white font-weight-bold">了解更多</a>
+                        </p>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-md-12 row bg-light rounded p-3 p-md-3">
+                        <div class="col-md-6">
+                            <h1 class="" style="color: green">[[${good.g_price}]] 元</h1>
+                        </div>
+                        <div class="col-md-6">
+                            <form method="post" th:action="'/buy/'+${good.g_name}">
+                                <button th:if="${buy}=='none'" type="submit"
+                                        class="col-md-12 btn btn-outline-success btn-success"><h2
+                                        class="font-weight-bold">立即购买</h2></button>
+                            </form>
+                            <button th:if="${buy}=='already'"
+                                    class="col-md-12 btn btn-outline-danger btn-danger disabled"><h2
+                                    class="font-weight-bold">已购买</h2></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <h3 class="pb-3 mb-4 font-italic border-bottom">
+                商品详情
+            </h3>
+
+            <div class="blog-post">
+
+                <img class="card-img-top" th:src="'/img/page/'+${good.g_name}+'/1'+.jpg" data-holder-rendered="true"/>
+                <img class="card-img-top" th:src="'/img/page/'+${good.g_name}+'/2'+.jpg" data-holder-rendered="true"/>
+                <img class="card-img-top" th:src="'/img/page/'+${good.g_name}+'/3'+.jpg" data-holder-rendered="true"/>
+                <img class="card-img-top" th:src="'/img/page/'+${good.g_name}+'/4'+.jpg" data-holder-rendered="true"/>
+                <img class="card-img-top" th:src="'/img/page/'+${good.g_name}+'/5'+.jpg" data-holder-rendered="true"/>
+
+            </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-3 mb-3 bg-light rounded">
+                <h4 class="font-italic">声明</h4>
+                <p class="mb-0">
+                    商城为第三方交易平台及互联网信息服务提供者，商城所展示的商品/服务的标题、价格、详情等信息内容系由店铺经营者发布，其真实性、准确性和合法性均由店铺经营者负责。商城提醒用户购买商品/服务前注意谨慎核实。如用户对商品/服务的标题、价格、详情等任何信息有任何疑问的，请在购买前通过聊天工具与店铺经营者沟通确认；商城存在海量店铺，如用户发现店铺内有任何违法/侵权信息，请立即向商城举报并提供有效线索。</p>
+            </div>
+
+            <div class="p-3">
+                <h4 class="font-italic">安全须知</h4>
+                <p class="mb-0">
+                    请勿随意接收任何来源不明的文件，请勿随意点击任何来源不明的链接。涉及资金往来的事项请务必仔细核对资金往来信息。 天猫不会以订单有问题，让您提供任何银行卡、密码、手机验证码！遇到可疑情况可进行举报。
+                </p>
+            </div>
+
+        </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                [[${good.g_name}]] 购买成功！
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">确认</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="asserts/js/vendor/jquery-slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+<script>window.jQuery || document.write('<script src="asserts/js/vendor/jquery-slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"><\/script>')</script>
+
+<script src="asserts/js/vendor/popper.min.js" th:src="@{/webjars/popper.js/1.15.0/popper.min.js}"></script>
+<script src="asserts/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
+<script src="asserts/js/vendor/holder.min.js"></script>
+<script>
+    Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+    });
+</script>
+</body>
+</html>

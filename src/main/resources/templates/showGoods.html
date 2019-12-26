@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/album.css" th:href="@{/asserts/css/album.css}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="/mycenter" class="navbar-brand d-flex align-items-center">
+                <strong th:text="${session.loginUser}">用户</strong>
+            </a>
+
+            <div>
+                <a class="navbar-brand align-items-center" href="/logoff">
+                    <button class="btn btn-outline-secondary ">
+                        注销
+                    </button>
+                </a>
+                <a class="navbar-brand align-items-center" href="/mycenter">
+                    <button class="btn btn-primary my-2">
+                        个人中心
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>商城</h1>
+            <p class="lead text-muted">网上商城创立于2019年底，是一家刚刚写出来的电子商务交易平台，网站目前以出售市面上一些热门的电子产品为特色，向下看看有哪些喜欢的吧！</p>
+
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4" th:each="good:${goods}">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top"
+                             src="#"
+                             th:src="'img/'+${good.g_name}+.jpg"
+                             data-holder-rendered="true">
+                        <div class="card-body">
+                            <h4 class="card-text">[[${good.g_name}]]</h4>
+                            <p class="text-muted">[[${good.g_description}]]</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">[[${good.g_price}]] 元</small>
+                                <div class="btn-group col-md-7">
+                                    <a class="col-md-12" style="color: #5a6268" th:href="'detail/'+${good.g_name}">
+                                        <button type="button" class="col-md-12 btn btn-sm btn-outline-secondary">查看
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="asserts/js/vendor/jquery-slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+<script>window.jQuery || document.write('<script src="asserts/js/vendor/jquery-slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"><\/script>')</script>
+
+<script src="asserts/js/vendor/popper.min.js" th:src="@{/webjars/popper.js/1.15.0/popper.min.js}"></script>
+<script src="asserts/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
+<script src="asserts/js/vendor/holder.min.js"></script>
+</body>
